@@ -7,23 +7,23 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// ±È½Ïº¯Êı£¬ÓÃÓÚqsort
+// æ¯”è¾ƒå‡½æ•°ï¼Œç”¨äºqsort
 int compare(const void *a, const void *b) {
     return (*(int*)a - *(int*)b);
 }
 
-// º¯Êı£¬ÓÃÓÚ¼ì²éÁ½¸öÊı×éÊÇ·ñÏàÍ¬
+// å‡½æ•°ï¼Œç”¨äºæ£€æŸ¥ä¸¤ä¸ªæ•°ç»„æ˜¯å¦ç›¸åŒ
 int checkEqual(int arr1[], int arr2[], int n) {
 	int i;
     for ( i = 0; i < n; i++) {
         if (arr1[i] != arr2[i]) {
-            return 0; // Êı×é²»ÏàÍ¬
+            return 0; // æ•°ç»„ä¸ç›¸åŒ
         }
     }
-    return 1; // Êı×éÏàÍ¬
+    return 1; // æ•°ç»„ç›¸åŒ
 }
 
-// Ö÷º¯Êı
+// ä¸»å‡½æ•°
 int main() {
     int n1, n2,i;
     scanf("%d", &n1);
@@ -38,24 +38,24 @@ int main() {
         scanf("%d", &arr2[i]);
     }
 
-    // Èç¹ûÁ½¸öÊı×éµÄ³¤¶È²»Í¬£¬ËüÃÇÒ»¶¨²»ÏàÍ¬
+    // å¦‚æœä¸¤ä¸ªæ•°ç»„çš„é•¿åº¦ä¸åŒï¼Œå®ƒä»¬ä¸€å®šä¸ç›¸åŒ
     if (n1 != n2) {
         printf("0\n");
         return 0;
     }
 
-    // ¶ÔÁ½¸öÊı×é½øĞĞÅÅĞò
+    // å¯¹ä¸¤ä¸ªæ•°ç»„è¿›è¡Œæ’åº
     qsort(arr1, n1, sizeof(int), compare);
     qsort(arr2, n2, sizeof(int), compare);
 
-    // ¼ì²éÁ½¸öÊı×éÊÇ·ñÏàÍ¬
+    // æ£€æŸ¥ä¸¤ä¸ªæ•°ç»„æ˜¯å¦ç›¸åŒ
     if (checkEqual(arr1, arr2, n1)) {
         printf("1\n");
     } else {
         printf("0\n");
     }
 
-    // Êä³öµÚÒ»¸öÊı×éµÄÔªËØ¼°ÆäÖØ¸´¸öÊı
+    // è¾“å‡ºç¬¬ä¸€ä¸ªæ•°ç»„çš„å…ƒç´ åŠå…¶é‡å¤ä¸ªæ•°
     int count = 1;
     for (i = 0; i < n1; i++) {
         if (i < n1 - 1 && arr1[i] == arr1[i + 1]) {
